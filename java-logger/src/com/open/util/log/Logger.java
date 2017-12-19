@@ -17,6 +17,8 @@ import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by long on 2017/9/13.
@@ -406,6 +408,15 @@ public final class Logger{
     }
 
     //------------------------------------------
+    private static Set<String> filterTraceElements = new HashSet<String>();
+    static{
+    	filterTraceElements.add(Thread.class.getName());
+    	filterTraceElements.add(Logger.class.getName());
+    }
+    public static void addFilterTraceElement(String className){
+    	filterTraceElements.add(className);
+    }
+    
     private static boolean fillTraceNames(String[] names){
         StackTraceElement[] sts = Thread.currentThread().getStackTrace();
         if (sts != null) {
@@ -414,12 +425,8 @@ public final class Logger{
                     continue;
                 }
 
-                if (st.getClassName().equals(Thread.class.getName())) {
-                    continue;
-                }
-
-                if (st.getClassName().equals(Logger.class.getName())) {
-                    continue;
+                if(filterTraceElements.contains(st.getClassName())){
+                	continue;
                 }
 
                 names[ILog.INDEX_FILENAME]   = st.getFileName();
