@@ -105,6 +105,107 @@ public final class Logger{
     }
 
     //------------------------------------------
+    public static void v(String... kv) {
+        if(null == mLogger || kv.length == 0 || null == mLogConfig ||!mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_VERBOSE)){
+            return;
+        }
+
+        String trace = null;
+        if(mLogConfig.isCanFormatTag()){
+            String [] names = new String[6];
+            if(fillTraceNames(names)){
+                trace = mLogConfig.getTraceInfo(names);
+            }
+        }
+
+        String[] logKv = kv;
+        int size = mLogger.mLoggerList.size();
+        for (int i = 0; i < size; i++) {
+            mLogger.mLoggerList.get(i).v(LogConfig.LOG_LEVEL_VERBOSE,null,trace,logKv);
+        }
+    }
+
+    public static void d(String... kv) {
+        if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_DEBUG)){
+            return;
+        }
+
+        String trace = null;
+        if(mLogConfig.isCanFormatTag()){
+            String [] names = new String[6];
+            if(fillTraceNames(names)){
+                trace = mLogConfig.getTraceInfo(names);
+            }
+        }
+
+        String[] logKv = kv;
+        int size = mLogger.mLoggerList.size();
+        for (int i = 0; i < size; i++) {
+            mLogger.mLoggerList.get(i).d(LogConfig.LOG_LEVEL_DEBUG,null,trace,logKv);
+        }
+    }
+
+    public static void i(String... kv) {
+        if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_INFO)){
+            return;
+        }
+
+        String trace = null;
+        if(mLogConfig.isCanFormatTag()){
+            String [] names = new String[6];
+            if(fillTraceNames(names)){
+                trace = mLogConfig.getTraceInfo(names);
+            }
+        }
+
+        String[] logKv = kv;
+        int size = mLogger.mLoggerList.size();
+        for (int i = 0; i < size; i++) {
+            mLogger.mLoggerList.get(i).i(LogConfig.LOG_LEVEL_INFO,null,trace,logKv);
+        }
+    }
+
+    public static void w(String... kv) {
+        if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_WARN)){
+            return;
+        }
+
+        String trace = null;
+        if(mLogConfig.isCanFormatTag()){
+            String [] names = new String[6];
+            if(fillTraceNames(names)){
+                trace = mLogConfig.getTraceInfo(names);
+            }
+        }
+
+        String[] logKv = kv;
+        int size = mLogger.mLoggerList.size();
+        for (int i = 0; i < size; i++) {
+            mLogger.mLoggerList.get(i).w(LogConfig.LOG_LEVEL_WARN,null,trace,logKv);
+        }
+    }
+
+    public static  void e(String... kv) {
+        if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_ERROR)){
+            return;
+        }
+
+        String trace = null;
+        if(mLogConfig.isCanFormatTag()){
+            String [] names = new String[6];
+            if(fillTraceNames(names)){
+                trace = mLogConfig.getTraceInfo(names);
+            }
+        }
+
+        String[] logKv = kv;
+        int size = mLogger.mLoggerList.size();
+        for (int i = 0; i < size; i++) {
+            mLogger.mLoggerList.get(i).e(LogConfig.LOG_LEVEL_ERROR,null,trace,logKv);
+        }
+    }
+    
+    //------------------------------------------
     public static void v(String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig ||!mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_VERBOSE)){
             return;
