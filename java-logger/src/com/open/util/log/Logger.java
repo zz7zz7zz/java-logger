@@ -121,7 +121,7 @@ public final class Logger{
         String[] logKv = kv;
         int size = mLogger.mLoggerList.size();
         for (int i = 0; i < size; i++) {
-            mLogger.mLoggerList.get(i).v(LogConfig.LOG_LEVEL_VERBOSE,null,trace,logKv);
+            mLogger.mLoggerList.get(i).v(LogConfig.LOG_LEVEL_VERBOSE,"",trace,logKv);
         }
     }
 
@@ -141,7 +141,7 @@ public final class Logger{
         String[] logKv = kv;
         int size = mLogger.mLoggerList.size();
         for (int i = 0; i < size; i++) {
-            mLogger.mLoggerList.get(i).d(LogConfig.LOG_LEVEL_DEBUG,null,trace,logKv);
+            mLogger.mLoggerList.get(i).d(LogConfig.LOG_LEVEL_DEBUG,"",trace,logKv);
         }
     }
 
@@ -161,7 +161,7 @@ public final class Logger{
         String[] logKv = kv;
         int size = mLogger.mLoggerList.size();
         for (int i = 0; i < size; i++) {
-            mLogger.mLoggerList.get(i).i(LogConfig.LOG_LEVEL_INFO,null,trace,logKv);
+            mLogger.mLoggerList.get(i).i(LogConfig.LOG_LEVEL_INFO,"",trace,logKv);
         }
     }
 
@@ -181,7 +181,7 @@ public final class Logger{
         String[] logKv = kv;
         int size = mLogger.mLoggerList.size();
         for (int i = 0; i < size; i++) {
-            mLogger.mLoggerList.get(i).w(LogConfig.LOG_LEVEL_WARN,null,trace,logKv);
+            mLogger.mLoggerList.get(i).w(LogConfig.LOG_LEVEL_WARN,"",trace,logKv);
         }
     }
 
@@ -201,12 +201,12 @@ public final class Logger{
         String[] logKv = kv;
         int size = mLogger.mLoggerList.size();
         for (int i = 0; i < size; i++) {
-            mLogger.mLoggerList.get(i).e(LogConfig.LOG_LEVEL_ERROR,null,trace,logKv);
+            mLogger.mLoggerList.get(i).e(LogConfig.LOG_LEVEL_ERROR,"",trace,logKv);
         }
     }
     
-    //------------------------------------------
-    public static void v(String tag , String... kv) {
+    //--------------------带Tag日志----------------------
+    public static void vt(String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig ||!mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_VERBOSE)){
             return;
         }
@@ -226,7 +226,7 @@ public final class Logger{
         }
     }
 
-    public static void d(String tag  , String... kv) {
+    public static void dt(String tag  , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_DEBUG)){
             return;
         }
@@ -246,7 +246,7 @@ public final class Logger{
         }
     }
 
-    public static void i(String tag , String... kv) {
+    public static void it(String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_INFO)){
             return;
         }
@@ -266,7 +266,7 @@ public final class Logger{
         }
     }
 
-    public static void w(String tag  , String... kv) {
+    public static void wt(String tag  , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_WARN)){
             return;
         }
@@ -286,7 +286,7 @@ public final class Logger{
         }
     }
 
-    public static  void e(String tag , String... kv) {
+    public static  void et(String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermitLevel(LogConfig.LOG_LEVEL_ERROR)){
             return;
         }
@@ -306,8 +306,8 @@ public final class Logger{
         }
     }
 
-    //------------------------------------------
-    public static void va(String author , String tag , String... kv) {
+  //--------------------带Author/Tag日志----------------------
+    public static void vat(String author , String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig ||!mLogConfig.isPermit(author, LogConfig.LOG_LEVEL_VERBOSE)){
             return;
         }
@@ -327,7 +327,7 @@ public final class Logger{
         }
     }
 
-    public static void da(String author , String tag  , String... kv) {
+    public static void dat(String author , String tag  , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermit(author, LogConfig.LOG_LEVEL_DEBUG)){
             return;
         }
@@ -347,7 +347,7 @@ public final class Logger{
         }
     }
 
-    public static void ia(String author  , String tag , String... kv) {
+    public static void iat(String author  , String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermit(author, LogConfig.LOG_LEVEL_INFO)){
             return;
         }
@@ -367,7 +367,7 @@ public final class Logger{
         }
     }
 
-    public static void wa(String author , String tag  , String... kv) {
+    public static void wat(String author , String tag  , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermit(author, LogConfig.LOG_LEVEL_WARN)){
             return;
         }
@@ -387,7 +387,7 @@ public final class Logger{
         }
     }
 
-    public static  void ea(String author  , String tag , String... kv) {
+    public static  void eat(String author  , String tag , String... kv) {
         if(null == mLogger || kv.length == 0 || null == mLogConfig || !mLogConfig.isPermit(author, LogConfig.LOG_LEVEL_ERROR)){
             return;
         }
