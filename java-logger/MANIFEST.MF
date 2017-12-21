@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Long
+Class-Path: libs/org.json.jar libs/open.net.client.jar
+Main-Class: com.open.net.main.Main
+
