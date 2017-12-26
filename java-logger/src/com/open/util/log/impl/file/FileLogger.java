@@ -1,6 +1,8 @@
 package com.open.util.log.impl.file;
 
+import com.open.util.log.Logger;
 import com.open.util.log.base.ILog;
+import com.open.util.log.base.LogConfig;
 import com.open.util.log.base.LogMessage;
 
 import java.io.File;
@@ -221,8 +223,10 @@ public final class FileLogger implements ILog {
         while(true){
 
             ++fileNameIndex;
-
-            String pattern = String.format(fileNameFormater,fileNameIndex);
+            String _fileNameFormater = fileNameFormater;
+            _fileNameFormater = _fileNameFormater.replace(LogConfig.__PID__, ""+Logger.getPid());
+            _fileNameFormater = _fileNameFormater.replace(LogConfig.__SID__, ""+Logger.getServerId());
+            String pattern = String.format(_fileNameFormater,fileNameIndex);
             SimpleDateFormat sdf = new SimpleDateFormat(pattern);
             writtenFileName = fileSavePath + sdf.format(new Date())+".txt";
             File file = new File(writtenFileName);

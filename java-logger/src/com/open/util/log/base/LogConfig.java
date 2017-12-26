@@ -70,6 +70,7 @@ public final class LogConfig {
     public static final String __TAG__      = "__TAG__";
     public static final String __PID__      = "__PID__";
     public static final String __TID__      = "__TID__";
+    public static final String __SID__      = "__SID__";
 
     public static final int FLAG__FILE__    = 0X0001;
     public static final int FLAG__CLASS__   = 0X0002;

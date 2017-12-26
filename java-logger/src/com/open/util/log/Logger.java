@@ -31,6 +31,11 @@ public final class Logger{
     private static LogConfig mLogConfig;
     private static boolean isInitialized = false;
 
+    public static LogConfig init(String config_file_path,int serverId){
+    	setServerId(serverId);
+    	return init(config_file_path);
+    }
+    
     public static LogConfig init(String config_file_path){
         if(!isInitialized){
             mLogConfig = LogConfig.parse(CfgParser.parseToMap(config_file_path));
@@ -543,15 +548,30 @@ public final class Logger{
         return false;
     }
 
-    private static int getPid() {
-        RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
-        String name = runtime.getName(); // format: "pid@hostname"
-        try {
-            return Integer.parseInt(name.substring(0, name.indexOf('@')));
-        } catch (Exception e) {
-            return -1;
-        }
+    //PID
+    private static int PID = -1;
+    public static int getPid() {
+    	if(PID == -1){
+            RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();
+            String name = runtime.getName(); // format: "pid@hostname"
+            try {
+            	PID = Integer.parseInt(name.substring(0, name.indexOf('@')));
+            } catch (Exception e) {
+                return -1;
+            }
+    	}
+    	return PID;
     }
+    
+    //SID
+    private static int SID = -1;
+    public static int getServerId() {
+    	return SID;
+    }
+    private static void setServerId(int sid) {
+    	SID = sid;
+    }
+    
     //-------------------------------------------------------------------
     private static final int JSON_INDENT = 2;
     private static String[] transformMessage(Object[] input){
