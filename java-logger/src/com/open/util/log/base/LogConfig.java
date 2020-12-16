@@ -1,7 +1,8 @@
 package com.open.util.log.base;
 
-import com.open.net.client.structures.TcpAddress;
-import com.open.net.client.structures.UdpAddress;
+
+import com.open.net.client.object.TcpAddress;
+import com.open.net.client.object.UdpAddress;
 import com.open.util.log.util.CfgParser;
 
 import java.util.Arrays;

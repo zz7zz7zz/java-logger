@@ -1,10 +1,10 @@
 package com.open.util.log.impl.net;
 
 import com.open.net.client.impl.tcp.nio.NioClient;
-import com.open.net.client.structures.BaseClient;
-import com.open.net.client.structures.BaseMessageProcessor;
-import com.open.net.client.structures.TcpAddress;
-import com.open.net.client.structures.message.Message;
+import com.open.net.client.message.Message;
+import com.open.net.client.object.AbstractClient;
+import com.open.net.client.object.AbstractClientMessageProcessor;
+import com.open.net.client.object.TcpAddress;
 import com.open.util.log.base.ILog;
 
 import java.text.SimpleDateFormat;
@@ -58,10 +58,10 @@ public final class TcpLogger implements ILog {
     private NioClient mNioClient ;
 
 
-    private BaseMessageProcessor mMessageProcessor =new BaseMessageProcessor() {
+    private AbstractClientMessageProcessor mMessageProcessor =new AbstractClientMessageProcessor() {
 
         @Override
-        public void onReceiveMessages(BaseClient mClient, final LinkedList<Message> mQueen) {
+        public void onReceiveMessages(AbstractClient mClient, final LinkedList<Message> mQueen) {
             //对收到的信息不处理
         }
     };
